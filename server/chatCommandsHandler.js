@@ -5,6 +5,7 @@ import { logPlayerInfo } from './playerConnectHandler.js';
 import { LOBBY_POSITION, FFA_POSITION, FFA_DIMENSION, LOBBY_DIMENSION } from '../helper/coords.js';
 import { equipFFAWeapon, removeFFAWeapon } from './ffaLogic.js';
 
+const lastCommandUsage = new Map();
 
 export function registerChatCommands() {
     chat.registerCmd('ffa', handleFFACommand);
@@ -12,6 +13,11 @@ export function registerChatCommands() {
 }
 
 export function handleFFACommand(player) {
+    if (isRateLimited(player)) {
+        alt.log(`${player.name} is rate limited from using /ffa command too frequently.`);
+        return;
+    }
+
     teleportPlayer(player, FFA_POSITION, FFA_DIMENSION);
     player.setSyncedMeta('isInFFA', true);
     equipFFAWeapon(player);
@@ -19,6 +25,11 @@ export function handleFFACommand(player) {
 }
 
 export function handleExitFFACommand(player) {
+    if (isRateLimited(player)) {
+        alt.log(`${player.name} is rate limited from using /exitffa command too frequently.`);
+        return;
+    }
+
     teleportPlayer(player, LOBBY_POSITION, LOBBY_DIMENSION);
     player.setSyncedMeta('isInFFA', false);
     removeFFAWeapon(player);
@@ -33,9 +44,17 @@ export function teleportPlayer(player, position, dimension) {
     logPlayerInfo(player, `teleported to ${JSON.stringify(position)}`);
 }
 
+function isRateLimited(player) {
+    const now = Date.now();
+    if (lastCommandUsage.has(player.id) && now - lastCommandUsage.get(player.id) < 5000) {
+        return true;
+    }
+    lastCommandUsage.set(player.id, now);
+    return false;
+}
+
 chat.registerCmd('coords', (player) => {
-    console.log("erstelle koordinaten");
     let coords = player.pos;
-    alt.log(coords + ("von alt konsole"));
-    console.log(coords + "von konsole")
-})
+    alt.log(coords + (" from alt console"));
+    console.log(coords + " from console");
+});
