@@ -3,6 +3,7 @@ import * as chat from 'alt:chat';
 import * as alt from 'alt-server';
 import { logPlayerInfo } from './playerConnectHandler.js';
 import { LOBBY_POSITION, FFA_POSITION, FFA_DIMENSION, LOBBY_DIMENSION } from '../helper/coords.js';
+import { equipFFAWeapon, removeFFAWeapon } from './ffaLogic.js';
 
 
 export function registerChatCommands() {
@@ -13,12 +14,14 @@ export function registerChatCommands() {
 export function handleFFACommand(player) {
     teleportPlayer(player, FFA_POSITION, FFA_DIMENSION);
     player.setSyncedMeta('isInFFA', true);
+    equipFFAWeapon(player);
     logPlayerInfo(player, "joined the FFA zone");
 }
 
 export function handleExitFFACommand(player) {
     teleportPlayer(player, LOBBY_POSITION, LOBBY_DIMENSION);
     player.setSyncedMeta('isInFFA', false);
+    removeFFAWeapon(player);
     logPlayerInfo(player, "exited the FFA zone");
 }
 
