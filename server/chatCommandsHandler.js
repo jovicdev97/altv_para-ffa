@@ -1,4 +1,3 @@
-/// <reference types="@altv/types-server" />
 import * as chat from 'alt:chat';
 import * as alt from 'alt-server';
 import { logPlayerInfo } from './playerConnectHandler.js';
@@ -8,6 +7,7 @@ import { equipFFAWeapon, removeFFAWeapon } from './ffaLogic.js';
 export function registerChatCommands() {
     chat.registerCmd('ffa', handleFFACommand);
     chat.registerCmd('exitffa', handleExitFFACommand);
+    chat.registerCmd('teleport', handleTeleportCommand); // Register teleport command
 }
 
 export function handleFFACommand(player) {
@@ -32,6 +32,14 @@ export function handleExitFFACommand(player) {
     player.setSyncedMeta('isInFFA', false);
     removeFFAWeapon(player);
     logPlayerInfo(player, "exited the FFA zone");
+}
+
+export function handleTeleportCommand(player) {
+    if (player.valid && player.dimension === LOBBY_DIMENSION) {
+        alt.emitClient(player, 'openTeleportMenu');
+    } else {
+        alt.log(`${player.name} cannot open teleport menu. Player is either invalid or not in the lobby dimension.`);
+    }
 }
 
 export function teleportPlayer(player, position, dimension) {

@@ -1,8 +1,58 @@
-/// <reference types="@altv/types-client" />
 import * as alt from 'alt-client';
 import * as native from 'natives';
 
+const teleportMenuURL = 'http://resource/client/html/teleportMenu.html';
+let webView = null;
+
 /* dont do this */
+alt.onServer('openTeleportMenu', () => {
+    const player = alt.Player.local;
+    if (webView === null && player.valid && player.dimension === 0) {
+        webView = new alt.WebView(teleportMenuURL);
+        webView.focus();
+        alt.showCursor(true);
+        alt.toggleGameControls(false);
+        
+        webView.on('teleportPlayer', handleTeleport);
+        webView.on('closeMenu', handleCloseMenu);
+    }
+});
+
+function handleTeleport(location) {
+    let position;
+    switch (location) {
+        case 'Airport':
+            position = { x: -1034.6, y: -2733.6, z: 13.8 };
+            break;
+        case 'Vinewood Sign':
+            position = { x: 709.7, y: 1180.9, z: 325.0 };
+            break;
+        case 'Mount Chiliad':
+            position = { x: 501.5, y: 5604.8, z: 796.9 };
+            break;
+        default:
+            position = null;
+            break;
+    }
+    
+    if (position) {
+        alt.emitServer('teleportPlayerToLocation', position);
+    }
+    closeMenuSafely();
+}
+
+function handleCloseMenu() {
+    closeMenuSafely();
+}
+
+function closeMenuSafely() {
+    if (webView !== null) {
+        webView.destroy();
+        webView = null;
+    }
+    alt.showCursor(false);
+    alt.toggleGameControls(true);
+}
 
 const FFA_CENTER = { x: -833.4594, y: -443.9868, z: 36.6263 };
 const FFA_RADIUS = 100;
