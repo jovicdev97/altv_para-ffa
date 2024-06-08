@@ -12,3 +12,11 @@ function handleSyncedMetaChange(entity, key, value) {
         }
     }
 }
+
+alt.onServer('entityEnterColshape', () => {
+    console.log('Entity entered FFA colshape');
+});
+
+alt.onServer('entityLeaveColshape', () => {
+    console.log('Entity left FFA colshape');
+});
