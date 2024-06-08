@@ -4,54 +4,52 @@ import { LOBBY_POSITION, FFA_POSITION, FFA_DIMENSION, LOBBY_DIMENSION } from '..
 import { npcPos1, npcPos2 } from '../helper/npcPos.js';
 import db from '../helper/mysql/db.js';
 
-export function handlePlayerConnect(player) {
-    const socialId = player.socialID || 'unknown';
-    const discordId = player.discordID || 'unknown';
+export async function handlePlayerConnect(player) {
+    try {
+        const socialId = player.socialID || 'unknown';
+        const discordId = player.discordID || 'unknown';
 
-    db.query('SELECT * FROM players WHERE socialid = ? OR discordid = ?', [socialId, discordId], (err, results) => {
-        if (err) {
-            console.error('Database query error:', err);
-            return;
-        }
+        const [results] = await db.promise().query(
+            'SELECT * FROM players WHERE socialid = ? OR discordid = ?',
+            [socialId, discordId]
+        );
+
         if (results.length === 0) {
-            db.query('INSERT INTO players (socialid, discordid, name) VALUES (?, ?, ?)', [socialId, discordId, player.name], (err) => {
-                if (err) {
-                    console.error('Error inserting player into database:', err);
-                    return;
-                }
-                console.log(`New player ${player.name} added to the database.`);
-            });
+            await db.promise().query(
+                'INSERT INTO players (socialid, discordid, name) VALUES (?, ?, ?)',
+                [socialId, discordId, player.name]
+            );
+            console.log(`New player ${player.name} added to the database.`);
         } else {
             const dbPlayer = results[0];
             if (dbPlayer.socialid !== socialId || dbPlayer.discordid !== discordId) {
-                db.query('INSERT INTO players (socialid, discordid, name) VALUES (?, ?, ?)', [socialId, discordId, player.name], (err) => {
-                    if (err) {
-                        console.error('Error inserting player into database:', err);
-                        return;
-                    }
-                    console.log(`Player ${player.name} has new IDs and was added to the database.`);
-                });
+                await db.promise().query(
+                    'INSERT INTO players (socialid, discordid, name) VALUES (?, ?, ?)',
+                    [socialId, discordId, player.name]
+                );
+                console.log(`Player ${player.name} has new IDs and was added to the database.`);
             } else {
                 if (dbPlayer.name !== player.name) {
-                    db.query('UPDATE players SET name = ? WHERE socialid = ? OR discordid = ?', [player.name, socialId, discordId], (err) => {
-                        if (err) {
-                            console.error('Error updating player name in the database:', err);
-                            return;
-                        }
-                        console.log(`Player ${player.name} reconnected with updated name.`);
-                    });
+                    await db.promise().query(
+                        'UPDATE players SET name = ? WHERE socialid = ? OR discordid = ?',
+                        [player.name, socialId, discordId]
+                    );
+                    console.log(`Player ${player.name} reconnected with updated name.`);
                 } else {
                     console.log(`Player ${player.name} reconnected.`);
                 }
             }
         }
-    });
 
-    player.spawn(LOBBY_POSITION.x, LOBBY_POSITION.y, LOBBY_POSITION.z, 0);
-    createNPC();
-    player.dimension = LOBBY_DIMENSION;
-    player.setSyncedMeta('isInFFA', false);
-    logPlayerInfo(player, "connected and teleported to the lobby");
+        player.spawn(LOBBY_POSITION.x, LOBBY_POSITION.y, LOBBY_POSITION.z, 0);
+        createNPC();
+        player.dimension = LOBBY_DIMENSION;
+        player.setSyncedMeta('isInFFA', false);
+        logPlayerInfo(player, "connected and teleported to the lobby");
+
+    } catch (err) {
+        console.error('Error handling player connect:', err);
+    }
 }
 
 export function handlePlayerDisconnect(player) {
