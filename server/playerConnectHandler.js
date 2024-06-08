@@ -1,17 +1,20 @@
 /// <reference types="@altv/types-server" />
 import * as alt from 'alt-server';
-import { LOBBY_POSITION, LOBBY_DIMENSION, FFA_DIMENSION } from '../helper/coords.js';
+import { LOBBY_POSITION, FFA_POSITION, FFA_DIMENSION, LOBBY_DIMENSION } from '../helper/coords.js';
 import { npcPos1, npcPos2 } from '../helper/npcPos.js';
 import db from '../helper/mysql/db.js';
 
 export function handlePlayerConnect(player) {
-    db.query('SELECT * FROM players WHERE name = ?', [player.name], (err, results) => {
+    const socialId = player.socialID || 'unknown';
+    const discordId = player.discordID || 'unknown';
+
+    db.query('SELECT * FROM players WHERE socialid = ? OR discordid = ?', [socialId, discordId], (err, results) => {
         if (err) {
             console.error('Database query error:', err);
             return;
         }
         if (results.length === 0) {
-            db.query('INSERT INTO players (name) VALUES (?)', [player.name], (err) => {
+            db.query('INSERT INTO players (socialid, discordid, name) VALUES (?, ?, ?)', [socialId, discordId, player.name], (err) => {
                 if (err) {
                     console.error('Error inserting player into database:', err);
                     return;
@@ -19,7 +22,28 @@ export function handlePlayerConnect(player) {
                 console.log(`New player ${player.name} added to the database.`);
             });
         } else {
-            console.log(`Player ${player.name} exists in the database.`);
+            const dbPlayer = results[0];
+            if (dbPlayer.socialid !== socialId || dbPlayer.discordid !== discordId) {
+                db.query('INSERT INTO players (socialid, discordid, name) VALUES (?, ?, ?)', [socialId, discordId, player.name], (err) => {
+                    if (err) {
+                        console.error('Error inserting player into database:', err);
+                        return;
+                    }
+                    console.log(`Player ${player.name} has new IDs and was added to the database.`);
+                });
+            } else {
+                if (dbPlayer.name !== player.name) {
+                    db.query('UPDATE players SET name = ? WHERE socialid = ? OR discordid = ?', [player.name, socialId, discordId], (err) => {
+                        if (err) {
+                            console.error('Error updating player name in the database:', err);
+                            return;
+                        }
+                        console.log(`Player ${player.name} reconnected with updated name.`);
+                    });
+                } else {
+                    console.log(`Player ${player.name} reconnected.`);
+                }
+            }
         }
     });
 
@@ -43,7 +67,9 @@ export function logPlayerInfo(player, action) {
         health: player.health,
         armour: player.armour,
         ping: player.ping,
-        isInFFA: player.getSyncedMeta('isInFFA')
+        isInFFA: player.getSyncedMeta('isInFFA'),
+        socialId: player.socialID,
+        discordId: player.discordID
     };
 
     alt.log(`[${action.toUpperCase()}] Player Info:`, JSON.stringify(info, null, 4));
@@ -61,13 +87,13 @@ const createNPC = () => {
             console.error('Error: NPC could not be created.');
             return;
         }
-        
+
         npc1.dimension = LOBBY_DIMENSION;
         npc2.dimension = FFA_DIMENSION;
 
         npc1.setMeta('visible', true);
         npc2.setMeta('visible', true);
-        
+
     } catch (error) {
         console.error(error);
     }

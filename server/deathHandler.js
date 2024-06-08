@@ -1,12 +1,31 @@
 /// <reference types="@altv/types-server" />
 import alt from 'alt-server';
+import db from '../helper/mysql/db.js';
 import { LOBBY_POSITION, FFA_POSITION, FFA_DIMENSION, LOBBY_DIMENSION } from '../helper/coords.js';
-
-alt.on('playerDeath', handlePlayerDeath);
 
 export function handlePlayerDeath(player, killer, reason) {
     alt.log(`${player.name} was killed by ${killer ? killer.name : 'unknown'} (Reason: ${reason})`);
-    const respawnDelay = 2000;
+    const respawnDelay = 5000;
+
+    db.query('UPDATE players SET deaths = deaths + 1 WHERE socialid = ? OR discordid = ?', [player.socialID, player.discordID], (err) => {
+        if (err) {
+            console.error('Error updating deaths in the database:', err);
+            return;
+        }
+        console.log(`Updated deaths for player ${player.name}.`);
+    });
+
+    if (killer && killer.valid && killer instanceof alt.Player) {
+        db.query('UPDATE players SET kills = kills + 1 WHERE socialid = ? OR discordid = ?', [killer.socialID, killer.discordID], (err) => {
+            if (err) {
+                console.error('Error updating kills in the database:', err);
+                return;
+            }
+            console.log(`Updated kills for player ${killer.name}.`);
+        });
+    } else {
+        alt.log('Killer is not a valid player. Kills not updated.');
+    }
 
     let respawnPoint;
     if (player.dimension === FFA_DIMENSION) {
