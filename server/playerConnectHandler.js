@@ -2,8 +2,27 @@
 import * as alt from 'alt-server';
 import { LOBBY_POSITION, LOBBY_DIMENSION, FFA_DIMENSION } from '../helper/coords.js';
 import { npcPos1, npcPos2 } from '../helper/npcPos.js';
+import db from '../helper/mysql/db.js';
 
 export function handlePlayerConnect(player) {
+    db.query('SELECT * FROM players WHERE name = ?', [player.name], (err, results) => {
+        if (err) {
+            console.error('Database query error:', err);
+            return;
+        }
+        if (results.length === 0) {
+            db.query('INSERT INTO players (name) VALUES (?)', [player.name], (err) => {
+                if (err) {
+                    console.error('Error inserting player into database:', err);
+                    return;
+                }
+                console.log(`New player ${player.name} added to the database.`);
+            });
+        } else {
+            console.log(`Player ${player.name} exists in the database.`);
+        }
+    });
+
     player.spawn(LOBBY_POSITION.x, LOBBY_POSITION.y, LOBBY_POSITION.z, 0);
     createNPC();
     player.dimension = LOBBY_DIMENSION;
