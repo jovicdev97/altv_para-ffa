@@ -1,9 +1,11 @@
-/// <reference types="@altv/types-server" />
 import * as alt from 'alt-server';
 import { handlePlayerDamage } from './playerDamageHandler.js';
 import { handlePlayerConnect, handlePlayerDisconnect } from './playerConnectHandler.js';
 import { registerChatCommands, teleportPlayer } from './chatCommandsHandler.js';
 import { handlePlayerDeath } from './deathHandler.js';
+import { loadConfig } from '../helper/configLoader.js';
+
+const config = loadConfig('configs/positions.json');
 
 alt.on('playerConnect', handlePlayerConnect);
 alt.on('playerDisconnect', handlePlayerDisconnect);
