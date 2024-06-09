@@ -1,17 +1,28 @@
-{
-    "lobby_position": {
-        "x": -833.4594, "y": -443.9868, "z": 36.6263
+  {
+    "lobbyPosition": {
+        "x": 0,
+        "y": 0,
+        "z": 0
     },
-    "ffa_position": {
-        "x": -833.4594, "y": -443.9868, "z": 38.6263
+    "ffaPosition": {
+        "x": 100,
+        "y": 100,
+        "z": 100
+    },
+    "lobbyDimension": 0,
+    "ffaDimension": 1,
+    "ffaColshape": {
+        "x": 100,
+        "y": 100,
+        "radius": 50
+    },
+    "ffaMarker": {
+        "type": 1,
+        "color": [255, 0, 0, 100],
+        "scale": 1.5
     },
     "npc_positions": [
-      { "x": -835.6088, "y": -444.6857, "z": 36.6263 },
-      { "x": -834.6088, "y": -444.6857, "z": 36.6263 }
-    ],
-    "dimensions": {
-      "lobby_dimension": 0,
-      "ffa_dimension": 1
-    }
-  }
-  
+        { "x": -835.6088, "y": -444.6857, "z": 36.6263 },
+        { "x": -834.6088, "y": -444.6857, "z": 36.6263 }
+      ]
+}
