@@ -2,7 +2,6 @@
 import * as alt from 'alt-server';
 import db from '../helper/mysql/db.js';
 import { loadConfig } from '../helper/configLoader.js';
-import { createNPC } from '../helper/npcHandler.js';
 
 const config = loadConfig('configs/positions.json');
 const LOBBY_POSITION = config.lobbyPosition;
@@ -49,7 +48,6 @@ export async function handlePlayerConnect(player) {
 
         player.spawn(LOBBY_POSITION.x, LOBBY_POSITION.y, LOBBY_POSITION.z, 0);
         createMarkersForPlayer(player);
-        createNPC();
         player.dimension = LOBBY_DIMENSION;
         player.setSyncedMeta('isInFFA', false);
         logPlayerInfo(player, "connected and teleported to the lobby");
@@ -79,30 +77,6 @@ export function logPlayerInfo(player, action) {
 
     alt.log(`[${action.toUpperCase()}] Player Info:`, JSON.stringify(info, null, 4));
 }
-
-// create npc test
-/* const createNPC = () => {
-    try {
-        const npc1 = new alt.Ped('S_M_Y_PestCont_01', npcPos1, 0);
-        npc1.dimension = LOBBY_DIMENSION;
-
-        const npc2 = new alt.Ped('S_M_Y_PestCont_01', npcPos2, 0);
-        npc2.dimension = FFA_DIMENSION;
-        if (!npc1 || !npc2) {
-            console.error('Error: NPC could not be created.');
-            return;
-        }
-
-        npc1.dimension = LOBBY_DIMENSION;
-        npc2.dimension = FFA_DIMENSION;
-
-        npc1.setMeta('visible', true);
-        npc2.setMeta('visible', true);
-
-    } catch (error) {
-        console.error(error);
-    }
-} */
 
 function createMarkersForPlayer(player) {
     if (config.zones && Array.isArray(config.zones)) {
