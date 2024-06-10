@@ -14,24 +14,22 @@ export function handleFFACommand(player, args) {
     let zoneName = args.length > 0 ? args[0] : "1";
     let zone = config.zones.find(z => z.name === zoneName);
     if (!zone) {
-        alt.log(`FFA Zone ${zoneName} not found in config, defaulting to Zone 1`);
+        console.log(`FFA Zone ${zoneName} not found in config, defaulting to Zone 1`);
         zoneName = "1";
         zone = config.zones.find(z => z.name === zoneName);
         if (!zone) {
-            alt.log(`Default FFA Zone 1 not found in config`);
+            console.log(`Default FFA Zone 1 not found in config`);
             return;
         }
     }
-
     if (isRateLimited(player)) {
-        alt.log(`${player.name} is rate limited from using /ffa command too frequently.`);
+        alt.log(`${player.name} is rate limited from using /exitffa command too frequently.`);
         return;
     }
-
     teleportPlayer(player, zone.ffaPosition, zone.ffaDimension);
     player.setSyncedMeta('isInFFA', true);
     equipFFAWeapon(player);
-    logPlayerInfo(player, `joined the FFA zone ${zone.name}`);
+    console.log(`Player ${player.name} joined the FFA zone ${zone.name}`);
 }
 
 /* FFA-Exit Command: /exitffa */

@@ -10,7 +10,7 @@ const LOBBY_DIMENSION = config.lobbyDimension;
 
 // COLSHAPE EVENTS FOR PLAYER LEAVING THE FFA AREA
 
-config.zones.forEach(zone => {
+/* config.zones.forEach(zone => {
     const ffaColShape = new alt.ColshapeCircle(zone.ffaColshape.x, zone.ffaColshape.y, zone.ffaColshape.radius);
     ffaColShape.dimension = zone.ffaDimension;
 
@@ -32,4 +32,4 @@ config.zones.forEach(zone => {
             alt.emitClient(entity, 'entityLeaveColshape');
         }
     });
-});
+}); */
