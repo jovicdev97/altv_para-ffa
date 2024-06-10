@@ -12,7 +12,6 @@ const LOBBY_DIMENSION = config.lobbyDimension;
 export function registerChatCommands() {
     chat.registerCmd('ffa', handleFFACommand);
     chat.registerCmd('exitffa', handleExitFFACommand);
-    chat.registerCmd('teleport', handleTeleportCommand);
 }
 
 export function handleFFACommand(player, args) {
