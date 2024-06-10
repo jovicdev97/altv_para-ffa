@@ -1,7 +1,7 @@
 import * as alt from 'alt-server';
 import { handlePlayerDamage } from '../Server/playerDamageHandler.js';
 import { handlePlayerConnect, handlePlayerDisconnect } from '../server/playerConnectHandler.js';
-import { registerChatCommands } from '../server/chatCommandsHandler.js';
+import { registerChatCommands } from '../server/commands/chatCommands.js';
 import { teleportPlayer } from '../helper/teleportHandler.js';
 import { handlePlayerDeath } from '../server/deathHandler.js';
 import { loadConfig } from '../helper/configLoader.js';
