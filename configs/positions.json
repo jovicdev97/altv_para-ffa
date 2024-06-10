@@ -6,7 +6,7 @@
             "name": "1",
             "ffaPosition": {"x": -833.4594, "y": -443.9868, "z": 38.6263},
             "ffaDimension": 1,
-            "ffaColshape": {"x": -833.4594, "y": -443.9868, "radius": 50},
+            "ffaColshape": {"x": -833.4594, "y": -443.9868, "radius": 10},
             "ffaMarker": {"type": 1, "color": [255, 0, 0, 100], "scale": [50, 50, 50]}
         },
         {
@@ -18,8 +18,32 @@
         }
     ],
     "npc_positions": [
-        {"x": -833.6088, "y": -444.6857, "z": 36.6263, "dimension" : 0},
-        {"x": -834.6088, "y": -444.6857, "z": 36.6263, "dimension" : 1},
-        {"x": -837.6088, "y": -444.6857, "z": 36.6263, "dimension" : 2}
+        {
+            "x": -833.6088,
+            "y": -444.6857,
+            "z": 36.6263,
+            "dimension": 0,
+            "model": "S_M_Y_PestCont_01",
+            "rotation": {"x": 0, "y": 0, "z": 50},
+            "streamingDistance": 10
+        },
+        {
+            "x": -834.6088,
+            "y": -444.6857,
+            "z": 36.6263,
+            "dimension": 1,
+            "model": "S_M_Y_PestCont_01",
+            "rotation": {"x": 100, "y": 100, "z": 0},
+            "streamingDistance": 200
+        },
+        {
+            "x": -837.6088,
+            "y": -444.6857,
+            "z": 36.6263,
+            "dimension": 2,
+            "model": "S_M_Y_PestCont_01",
+            "rotation": {"x": 50, "y": 50, "z": 0},
+            "streamingDistance": 300
+        }
     ]
 }
