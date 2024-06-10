@@ -12,9 +12,9 @@ if (config && config.npc_positions) {
 export function createNPC(position) {
     try {
         const npc = new alt.Ped('S_M_Y_PestCont_01', position, 0);
-        npc.dimension = 0;
+        npc.dimension = position.dimension || 0;
         npc.setMeta('visible', true);
-        alt.log(`NPC created at (${position.x}, ${position.y}, ${position.z})`);
+        alt.log(`NPC created at (${position.x}, ${position.y}, ${position.z}) in dimension ${npc.dimension}`);
     } catch (error) {
         console.error('Error creating NPC:', error);
     }
