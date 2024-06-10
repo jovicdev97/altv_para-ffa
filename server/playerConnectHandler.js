@@ -2,6 +2,7 @@
 import * as alt from 'alt-server';
 import db from '../helper/mysql/db.js';
 import { loadConfig } from '../helper/configLoader.js';
+import { createNPC } from '../helper/npcHandler.js';
 
 const config = loadConfig('configs/positions.json');
 const LOBBY_POSITION = config.lobbyPosition;
@@ -48,7 +49,6 @@ export async function handlePlayerConnect(player) {
 
         player.spawn(LOBBY_POSITION.x, LOBBY_POSITION.y, LOBBY_POSITION.z, 0);
         createMarkersForPlayer(player);
-        createMarkersForPlayer(player);
         createNPC();
         player.dimension = LOBBY_DIMENSION;
         player.setSyncedMeta('isInFFA', false);
@@ -81,7 +81,7 @@ export function logPlayerInfo(player, action) {
 }
 
 // create npc test
-const createNPC = () => {
+/* const createNPC = () => {
     try {
         const npc1 = new alt.Ped('S_M_Y_PestCont_01', npcPos1, 0);
         npc1.dimension = LOBBY_DIMENSION;
@@ -102,7 +102,7 @@ const createNPC = () => {
     } catch (error) {
         console.error(error);
     }
-}
+} */
 
 function createMarkersForPlayer(player) {
     if (config.zones && Array.isArray(config.zones)) {

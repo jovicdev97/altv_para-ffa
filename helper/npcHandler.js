@@ -9,7 +9,7 @@ if (config && config.npc_positions) {
     });
 }
 
-function createNPC(position) {
+export function createNPC(position) {
     try {
         const npc = new alt.Ped('S_M_Y_PestCont_01', position, 0);
         npc.dimension = 0;
