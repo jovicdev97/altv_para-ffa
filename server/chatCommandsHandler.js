@@ -51,14 +51,6 @@ export function handleExitFFACommand(player) {
     logPlayerInfo(player, "exited the FFA zone");
 }
 
-export function handleTeleportCommand(player) {
-    if (player.valid && player.dimension === LOBBY_DIMENSION) {
-        alt.emitClient(player, 'openTeleportMenu');
-    } else {
-        alt.log(`${player.name} cannot open teleport menu. Player is either invalid or not in the lobby dimension.`);
-    }
-}
-
 function isRateLimited(player) {
     const now = Date.now();
     if (lastCommandUsage.has(player.id) && now - lastCommandUsage.get(player.id) < 5000) {
