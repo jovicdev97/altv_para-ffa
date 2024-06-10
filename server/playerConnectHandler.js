@@ -1,8 +1,14 @@
 /// <reference types="@altv/types-server" />
 import * as alt from 'alt-server';
-import { LOBBY_POSITION, FFA_POSITION, FFA_DIMENSION, LOBBY_DIMENSION } from '../helper/coords.js';
-import { npcPos1, npcPos2 } from '../helper/npcPos.js';
 import db from '../helper/mysql/db.js';
+import { loadConfig } from '../helper/configLoader.js';
+
+const config = loadConfig('configs/positions.json');
+const LOBBY_POSITION = config.lobbyPosition;
+const LOBBY_DIMENSION = config.lobbyDimension;
+const { ffaPosition: FFA_POSITION, ffaDimension: FFA_DIMENSION } = config.zones[0];
+const [npcPos1, npcPos2] = config.npc_positions;
+
 
 export async function handlePlayerConnect(player) {
     try {
@@ -42,6 +48,7 @@ export async function handlePlayerConnect(player) {
         }
 
         player.spawn(LOBBY_POSITION.x, LOBBY_POSITION.y, LOBBY_POSITION.z, 0);
+        createMarkersForPlayer(player);
         createNPC();
         player.dimension = LOBBY_DIMENSION;
         player.setSyncedMeta('isInFFA', false);
@@ -94,5 +101,29 @@ const createNPC = () => {
 
     } catch (error) {
         console.error(error);
+    }
+}
+
+function createMarkersForPlayer(player) {
+    if (config.zones && Array.isArray(config.zones)) {
+        config.zones.forEach(zone => {
+            const markerConfig = zone.ffaMarker;
+            const position = zone.ffaColshape;
+
+            // Ensure the position object has x, y, and z values
+            const posX = position.x;
+            const posY = position.y;
+            const posZ = position.z || 0; // Use 0 as a default z value if it's missing
+
+            alt.emitClient(player, 'createMarker', {
+                type: markerConfig.type,
+                position: { x: posX, y: posY, z: posZ },
+                scale: markerConfig.scale,
+                color: markerConfig.color,
+                dimension: zone.ffaDimension
+            });
+
+            alt.log(`Emitting createMarker event for player: ${player.name} with config: ${JSON.stringify(markerConfig)}`);
+        });
     }
 }
