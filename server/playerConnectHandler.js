@@ -9,6 +9,14 @@ const LOBBY_DIMENSION = config.lobbyDimension;
 const { ffaPosition: FFA_POSITION, ffaDimension: FFA_DIMENSION } = config.zones[0];
 const [npcPos1, npcPos2] = config.npc_positions;
 
+import { loadConfig } from '../helper/configLoader.js';
+
+const config = loadConfig('configs/positions.json');
+const LOBBY_POSITION = config.lobbyPosition;
+const LOBBY_DIMENSION = config.lobbyDimension;
+const { ffaPosition: FFA_POSITION, ffaDimension: FFA_DIMENSION } = config.zones[0];
+const [npcPos1, npcPos2] = config.npc_positions;
+
 
 export async function handlePlayerConnect(player) {
     try {
@@ -48,6 +56,7 @@ export async function handlePlayerConnect(player) {
         }
 
         player.spawn(LOBBY_POSITION.x, LOBBY_POSITION.y, LOBBY_POSITION.z, 0);
+        createMarkersForPlayer(player);
         createMarkersForPlayer(player);
         createNPC();
         player.dimension = LOBBY_DIMENSION;
