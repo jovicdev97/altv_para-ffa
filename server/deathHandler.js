@@ -1,7 +1,13 @@
 /// <reference types="@altv/types-server" />
 import alt from 'alt-server';
 import db from '../helper/mysql/db.js';
-import { LOBBY_POSITION, FFA_POSITION, FFA_DIMENSION, LOBBY_DIMENSION } from '../helper/coords.js';
+import { loadConfig } from '../helper/configLoader.js';
+
+const config = loadConfig('configs/positions.json');
+const LOBBY_POSITION = config.lobbyPosition;
+const LOBBY_DIMENSION = config.lobbyDimension;
+const { ffaPosition: FFA_POSITION, ffaDimension: FFA_DIMENSION } = config.zones[0];
+
 
 export function handlePlayerDeath(player, killer, reason) {
     alt.log(`${player.name} was killed by ${killer ? killer.name : 'unknown'} (Reason: ${reason})`);
