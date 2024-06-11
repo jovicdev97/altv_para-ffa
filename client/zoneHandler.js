@@ -8,6 +8,7 @@ export function handleEntityLeaveColshape() {
     console.log('Entity left FFA colshape');
 }
 
+
 export function handleCreateMarker(markerConfig) {
     console.log(`Received createMarker event with config: ${JSON.stringify(markerConfig)}`);
     const position = markerConfig.position;
