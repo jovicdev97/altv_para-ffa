@@ -15,9 +15,9 @@ alt.onServer('entityLeaveColshape', handleEntityLeaveColshape);
 alt.onServer('createMarker', handleCreateMarker);
 
 alt.onServer('showWebView', (url) => {
-    alt.log('Showing webview with URL:', url);
+    console.log('Showing webview with URL:', url);
     if (!url) {
-        alt.log('Error: URL is undefined');
+        console.log('Error: URL is undefined');
         return;
     }
 
@@ -29,7 +29,7 @@ alt.onServer('showWebView', (url) => {
     alt.toggleGameControls(false);
 
     webview.on('closeWebView', () => {
-        alt.log('Closing webview');
+        console.log('Closing webview');
         alt.showCursor(false);
         alt.toggleGameControls(true);
         webview.destroy();
@@ -38,5 +38,10 @@ alt.onServer('showWebView', (url) => {
 
     webview.on('joinFFAZone', (zoneName) => {
         alt.emitServer('joinFFAZone', zoneName);
+        console.log('Closing webview');
+        alt.showCursor(false);
+        alt.toggleGameControls(true);
+        webview.destroy();
+        webview = null;
     });
 });
