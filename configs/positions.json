@@ -1,32 +1,124 @@
 {
-    "lobbyPosition": {"x": -833.4594, "y": -443.9868, "z": 36.6263},
+    "lobbyPosition": {
+        "x": -833.4594,
+        "y": -443.9868,
+        "z": 36.6263
+    },
     "lobbyDimension": 0,
     "zones": [
         {
             "name": "1",
-            "description": "Zone 1",
-            "ffaPosition": {"x": -833.4594, "y": -443.9868, "z": 38.6263},
+            "description": "Zone 1 - Del Perro Pier",
+            "ffaPosition": {
+                "x": -1835.92,
+                "y": -1220.95,
+                "z": 13.017
+            },
             "ffaDimension": 1,
-            "ffaColshape": {"x": -833.4594, "y": -443.9868, "radius": 10},
-            "ffaMarker": {"type": 1, "color": [255, 0, 0, 100], "scale": [50, 50, 50]}
+            "ffaColshape": {
+                "x": -1835.92,
+                "y": -1220.95,
+                "radius": 50
+            },
+            "ffaMarker": {
+                "type": 1,
+                "color": [255, 0, 0, 100],
+                "scale": [100, 100, 100],
+                "position": {
+                    "x": -1835.92,
+                    "y": -1220.95,
+                    "z": 0.01
+                }
+            }
         },
         {
             "name": "2",
-            "description": "Zone 2",
-            "ffaPosition": {"x": -833.4594, "y": -443.9868, "z": 38.6263},
+            "description": "Zone 2 - Vespucci Beach",
+            "ffaPosition": {
+                "x": -1193.49,
+                "y": -1484.48,
+                "z": 4.379
+            },
             "ffaDimension": 2,
-            "ffaColshape": {"x": -833.4594, "y": -443.9868, "radius": 50},
-            "ffaMarker": {"type": 1, "color": [0, 255, 0, 100], "scale": [50, 50, 50]}
+            "ffaColshape": {
+                "x": -1193.49,
+                "y": -1484.48,
+                "radius": 100
+            },
+            "ffaMarker": {
+                "type": 1,
+                "color": [0, 255, 0, 100],
+                "scale": [200, 200, 200],
+                "position": {
+                    "x": -1193.49,
+                    "y": -1484.48,
+                    "z": 0.01
+                }
+            }
+        },
+        {
+            "name": "3",
+            "description": "Zone 3 - Mount Chiliad",
+            "ffaPosition": {
+                "x": 455.3934, 
+                "y": 5571.8770, 
+                "z": 781.1692
+            },
+            "ffaDimension": 3,
+            "ffaColshape": {
+                "x": 455.3934,
+                "y": 5571.8770, 
+                "radius": 15
+            },
+            "ffaMarker": {
+                "type": 1,
+                "color": [0, 255, 255, 100],
+                "scale": [30, 30, 30],
+                "position": {
+                    "x": 455.3934,
+                    "y": 5571.8770,
+                    "z": 755.1692
+                }
+            }
+        },
+        {
+            "name": "4",
+            "description": "Zone 4 - Maze Bank Arena",
+            "ffaPosition": {
+                "x": -255.24,
+                "y": -2031.07,
+                "z": 30.145
+            },
+            "ffaDimension": 4,
+            "ffaColshape": {
+                "x": -255.24,
+                "y": -2031.07,
+                "radius": 60
+            },
+            "ffaMarker": {
+                "type": 1,
+                "color": [255, 255, 0, 100],
+                "scale": [120, 120, 120],
+                "position": {
+                    "x": -255.24,
+                    "y": -2031.07,
+                    "z": 20
+                }
+            }
         }
     ],
-    "npc_positions": [ 
+    "npc_positions": [
         {
             "x": -833.6088,
             "y": -444.6857,
             "z": 36.6263,
             "dimension": 0,
             "model": "S_M_Y_PestCont_01",
-            "rotation": {"x": 0, "y": 0, "z": 50},
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 50
+            },
             "streamingDistance": 10
         },
         {
@@ -35,7 +127,11 @@
             "z": 36.6263,
             "dimension": 1,
             "model": "S_M_Y_PestCont_01",
-            "rotation": {"x": 100, "y": 100, "z": 0},
+            "rotation": {
+                "x": 100,
+                "y": 100,
+                "z": 0
+            },
             "streamingDistance": 200
         },
         {
@@ -44,8 +140,34 @@
             "z": 36.6263,
             "dimension": 2,
             "model": "S_M_Y_PestCont_01",
-            "rotation": {"x": 50, "y": 50, "z": 0},
+            "rotation": {
+                "x": 50,
+                "y": 50,
+                "z": 0
+            },
             "streamingDistance": 300
+        }
+    ],
+    "buttons": [
+        {
+            "id": "zone-1",
+            "label": "FFA-Zone 1 - Del Perro Pier",
+            "name": "1"
+        },
+        {
+            "id": "zone-2",
+            "label": "FFA-Zone 2 - Vespucci Beach",
+            "name": "2"
+        },
+        {
+            "id": "zone-3",
+            "label": "FFA-Zone 3 - Mount Chiliad",
+            "name": "3"
+        },
+        {
+            "id": "zone-4",
+            "label": "FFA-Zone 4 - Maze Bank Arena",
+            "name": "4"
         }
     ]
 }

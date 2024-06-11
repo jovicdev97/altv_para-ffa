@@ -1,14 +1,24 @@
 {
-    "buttons": [
+"buttons": [
         {
             "id": "zone-1",
-            "label": "FFA-Zone 1",
+            "label": "FFA-Zone 1 - Del Perro Pier",
             "name": "1"
         },
         {
             "id": "zone-2",
-            "label": "FFA-Zone 2",
+            "label": "FFA-Zone 2 - Vespucci Beach",
             "name": "2"
+        },
+        {
+            "id": "zone-3",
+            "label": "FFA-Zone 3 - Mount Chiliad",
+            "name": "3"
+        },
+        {
+            "id": "zone-4",
+            "label": "FFA-Zone 4 - Maze Bank Arena",
+            "name": "4"
         }
     ]
 }
