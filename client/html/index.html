@@ -168,9 +168,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log("Webview ready");
-            alt.emit('webview:ready');
-
             document.getElementById('exit-ffa').addEventListener('click', function() {
                 console.log('Exit FFA button clicked');
                 alt.emit('closeWebView');
@@ -186,8 +183,8 @@
                         btn.textContent = button.label;
                         btn.id = button.id;
                         btn.addEventListener('click', () => {
-                            console.log(`Button for zone ${button.zone} clicked`);
-                            alt.emit('joinFFAZone', button.zone);
+                            console.log(`Button for zone ${button.name} clicked`);
+                            alt.emit('joinFFAZone', button.name);
                         });
                         zoneButtonsContainer.appendChild(btn);
                     });

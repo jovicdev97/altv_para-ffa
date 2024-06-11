@@ -12,6 +12,13 @@ import '../helper/npcHandler.js';
 const config = loadConfig('configs/positions.json');
 alt.log('Loaded config:', JSON.stringify(config));
 
+const selectedZoneName = config.selectedZone;
+const selectedZone = config.zones.find(zone => zone.name === selectedZoneName);
+
+if (!selectedZone) {
+    alt.log(`Selected zone ${selectedZoneName} not found in config.`);
+}
+
 // Register event handlers
 alt.on('playerConnect', handlePlayerConnect);
 alt.on('playerDisconnect', handlePlayerDisconnect);
