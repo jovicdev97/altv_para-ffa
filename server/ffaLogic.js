@@ -3,7 +3,6 @@ import { loadConfig } from '../helper/configLoader.js';
 import '../helper/npcHandler.js';
 
 const positionsConfig = loadConfig('configs/positions.json');
-alt.log('Loaded config:', JSON.stringify(positionsConfig));
 
 function getZoneByPlayerDimension(player) {
     for (let zone of positionsConfig.zones) {

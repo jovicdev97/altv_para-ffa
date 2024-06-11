@@ -145,7 +145,7 @@
                     <!-- Buttons -->
                 </div>
             </div>
-            <div class="section">
+<!--             <div class="section">
                 <h3 class="text-2xl font-bold text-white">Statistiken</h3>
                 <div class="stat">
                     <span><i class="fas fa-skull-crossbones"></i> Kills:</span>
@@ -155,7 +155,7 @@
                     <span><i class="fas fa-heart-broken"></i> Deaths:</span>
                     <span id="deaths" class="stat-value font-bold">0</span>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="contact-info">
@@ -173,7 +173,8 @@
                 alt.emit('closeWebView');
             });
 
-            fetch('./config.json')
+
+            fetch('./webConfig.json')
                 .then(response => response.json())
                 .then(data => {
                     const zoneButtonsContainer = document.getElementById('zone-buttons');
