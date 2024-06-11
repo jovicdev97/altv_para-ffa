@@ -1,0 +1,249 @@
+{
+    "weapons": [
+        {
+            "name": "WEAPON_KNIFE",
+            "displayName": "Knife",
+            "ammo": 1
+        },
+        {
+            "name": "WEAPON_NIGHTSTICK",
+            "displayName": "Nightstick",
+            "ammo": 1
+        },
+        {
+            "name": "WEAPON_HAMMER",
+            "displayName": "Hammer",
+            "ammo": 1
+        },
+        {
+            "name": "WEAPON_BAT",
+            "displayName": "Baseball Bat",
+            "ammo": 1
+        },
+        {
+            "name": "WEAPON_GOLFCLUB",
+            "displayName": "Golf Club",
+            "ammo": 1
+        },
+        {
+            "name": "WEAPON_CROWBAR",
+            "displayName": "Crowbar",
+            "ammo": 1
+        },
+        {
+            "name": "WEAPON_PISTOL",
+            "displayName": "Pistol",
+            "ammo": 250
+        },
+        {
+            "name": "WEAPON_COMBATPISTOL",
+            "displayName": "Combat Pistol",
+            "ammo": 250
+        },
+        {
+            "name": "WEAPON_APPISTOL",
+            "displayName": "AP Pistol",
+            "ammo": 250
+        },
+        {
+            "name": "WEAPON_PISTOL50",
+            "displayName": "Pistol .50",
+            "ammo": 250
+        },
+        {
+            "name": "WEAPON_MICROSMG",
+            "displayName": "Micro SMG",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_SMG",
+            "displayName": "SMG",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_ASSAULTSMG",
+            "displayName": "Assault SMG",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_ASSAULTRIFLE",
+            "displayName": "Assault Rifle",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_CARBINERIFLE",
+            "displayName": "Carbine Rifle",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_ADVANCEDRIFLE",
+            "displayName": "Advanced Rifle",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_MG",
+            "displayName": "MG",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_COMBATMG",
+            "displayName": "Combat MG",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_PUMPSHOTGUN",
+            "displayName": "Pump Shotgun",
+            "ammo": 100
+        },
+        {
+            "name": "WEAPON_SAWNOFFSHOTGUN",
+            "displayName": "Sawed-Off Shotgun",
+            "ammo": 100
+        },
+        {
+            "name": "WEAPON_ASSAULTSHOTGUN",
+            "displayName": "Assault Shotgun",
+            "ammo": 100
+        },
+        {
+            "name": "WEAPON_BULLPUPSHOTGUN",
+            "displayName": "Bullpup Shotgun",
+            "ammo": 100
+        },
+        {
+            "name": "WEAPON_STUNGUN",
+            "displayName": "Stun Gun",
+            "ammo": 1
+        },
+        {
+            "name": "WEAPON_SNIPERRIFLE",
+            "displayName": "Sniper Rifle",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_HEAVYSNIPER",
+            "displayName": "Heavy Sniper",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_GRENADELAUNCHER",
+            "displayName": "Grenade Launcher",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_RPG",
+            "displayName": "RPG",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_MINIGUN",
+            "displayName": "Minigun",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_GRENADE",
+            "displayName": "Grenade",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_STICKYBOMB",
+            "displayName": "Sticky Bomb",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_SMOKEGRENADE",
+            "displayName": "Tear Gas",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_MOLOTOV",
+            "displayName": "Molotov Cocktail",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_BOTTLE",
+            "displayName": "Bottle",
+            "ammo": 1
+        },
+        {
+            "name": "WEAPON_GUSENBERG",
+            "displayName": "Gusenberg Sweeper",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_SPECIALCARBINE",
+            "displayName": "Special Carbine",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_HEAVYPISTOL",
+            "displayName": "Heavy Pistol",
+            "ammo": 250
+        },
+        {
+            "name": "WEAPON_BULLPUPRIFLE",
+            "displayName": "Bullpup Rifle",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_VINTAGEPISTOL",
+            "displayName": "Vintage Pistol",
+            "ammo": 250
+        },
+        {
+            "name": "WEAPON_DAGGER",
+            "displayName": "Antique Cavalry Dagger",
+            "ammo": 1
+        },
+        {
+            "name": "WEAPON_FIREWORK",
+            "displayName": "Firework Launcher",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_MUSKET",
+            "displayName": "Musket",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_HEAVYSHOTGUN",
+            "displayName": "Heavy Shotgun",
+            "ammo": 100
+        },
+        {
+            "name": "WEAPON_MARKSMANRIFLE",
+            "displayName": "Marksman Rifle",
+            "ammo": 500
+        },
+        {
+            "name": "WEAPON_HOMINGLAUNCHER",
+            "displayName": "Homing Launcher",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_PROXMINE",
+            "displayName": "Proximity Mine",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_SNOWBALL",
+            "displayName": "Snowball",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_FLAREGUN",
+            "displayName": "Flare Gun",
+            "ammo": 50
+        },
+        {
+            "name": "WEAPON_GARBAGEBAG",
+            "displayName": "Garbage Bag",
+            "ammo": 1
+        },
+        {
+            "name": "WEAPON_HANDCUFFS",
+            "displayName": "Handcuffs",
+            "ammo": 1
+        }
+    ]
+}

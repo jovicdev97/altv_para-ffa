@@ -29,7 +29,11 @@
                     "y": -1220.95,
                     "z": 0.01
                 }
-            }
+            },
+            "weapons": [
+                {"name": "WEAPON_PISTOL", "ammo": 250},
+                {"name": "WEAPON_KNIFE", "ammo": 0}
+            ]
         },
         {
             "name": "2",
@@ -54,7 +58,11 @@
                     "y": -1484.48,
                     "z": 0.01
                 }
-            }
+            },
+            "weapons": [
+                {"name": "WEAPON_SMG", "ammo": 500},
+                {"name": "WEAPON_BAT", "ammo": 0}
+            ]
         },
         {
             "name": "3",
@@ -79,7 +87,11 @@
                     "y": 5571.8770,
                     "z": 755.1692
                 }
-            }
+            },
+            "weapons": [
+                {"name": "WEAPON_SNIPERRIFLE", "ammo": 30},
+                {"name": "WEAPON_KNIFE", "ammo": 0}
+            ]
         },
         {
             "name": "4",
@@ -104,7 +116,11 @@
                     "y": -2031.07,
                     "z": 20
                 }
-            }
+            },
+            "weapons": [
+                {"name": "WEAPON_ASSAULTRIFLE", "ammo": 300},
+                {"name": "WEAPON_KNIFE", "ammo": 0}
+            ]
         }
     ],
     "npc_positions": [
