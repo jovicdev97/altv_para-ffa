@@ -1,0 +1,14 @@
+{
+    "buttons": [
+        {
+            "id": "zone-1",
+            "label": "FFA-Zone 1",
+            "zone": "1"
+        },
+        {
+            "id": "zone-2",
+            "label": "FFA-Zone 2",
+            "zone": "2"
+        }
+    ]
+}

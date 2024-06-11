@@ -35,4 +35,8 @@ alt.onServer('showWebView', (url) => {
         webview.destroy();
         webview = null;
     });
+
+    webview.on('joinFFAZone', (zoneName) => {
+        alt.emitServer('joinFFAZone', zoneName);
+    });
 });

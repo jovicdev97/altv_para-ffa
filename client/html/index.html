@@ -175,32 +175,24 @@
                 console.log('Exit FFA button clicked');
                 alt.emit('closeWebView');
             });
-            
-            alt.on('receiveConfig', (config) => {
-                console.log('Received config:', JSON.stringify(config));
-                const zoneButtonsContainer = document.getElementById('zone-buttons');
-                if (!zoneButtonsContainer) {
-                    console.log('Element with id "zone-buttons" not found');
-                    return;
-                }
-                zoneButtonsContainer.innerHTML = '';
 
-                if (config.zones && Array.isArray(config.zones)) {
-                    config.zones.forEach((zone) => {
-                        console.log('Creating button for zone:', zone.name);
-                        const button = document.createElement('button');
-                        button.className = 'btn w-full text-white py-2 px-4 rounded-lg';
-                        button.textContent = `FFA-Zone ${zone.name}`;
-                        button.addEventListener('click', () => {
-                            console.log(`Button for zone ${zone.name} clicked`);
-                            alt.emit('joinFFAZone', zone.name);
+            fetch('./config.json')
+                .then(response => response.json())
+                .then(data => {
+                    const zoneButtonsContainer = document.getElementById('zone-buttons');
+                    data.buttons.forEach(button => {
+                        const btn = document.createElement('button');
+                        btn.className = 'btn w-full text-white py-2 px-4 rounded-lg';
+                        btn.textContent = button.label;
+                        btn.id = button.id;
+                        btn.addEventListener('click', () => {
+                            console.log(`Button for zone ${button.zone} clicked`);
+                            alt.emit('joinFFAZone', button.zone);
                         });
-                        zoneButtonsContainer.appendChild(button);
+                        zoneButtonsContainer.appendChild(btn);
                     });
-                } else {
-                    console.log('No zones found in config or config.zones is not an array');
-                }
-            });
+                })
+                .catch(error => console.error('Error loading buttons:', error));
         });
     </script>
 </body>
