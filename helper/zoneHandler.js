@@ -35,7 +35,11 @@ export function createFFAZone(zoneConfig) {
     alt.Player.all.forEach(player => {
         alt.emitClient(player, 'createMarker', {
             type: ffaMarker.type,
-            position: ffaColshape,
+            position: {
+                x: ffaMarker.position.x,
+                y: ffaMarker.position.y,
+                z: ffaMarker.position.z
+            },
             scale: ffaMarker.scale,
             color: ffaMarker.color,
             dimension: ffaDimension

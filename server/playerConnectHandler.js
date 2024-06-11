@@ -86,7 +86,7 @@ function createMarkersForPlayer(player) {
     if (config.zones && Array.isArray(config.zones)) {
         config.zones.forEach(zone => {
             const markerConfig = zone.ffaMarker;
-            const position = zone.ffaColshape;
+            const position = markerConfig.position;
             const posX = position.x;
             const posY = position.y;
             const posZ = position.z || 0;
