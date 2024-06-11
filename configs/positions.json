@@ -31,8 +31,10 @@
                 }
             },
             "weapons": [
-                {"name": "WEAPON_PISTOL", "ammo": 250},
-                {"name": "WEAPON_KNIFE", "ammo": 0}
+                {"name": "WEAPON_KNIFE", "ammo": 1},
+                {"name": "WEAPON_GRENADE", "ammo": 10},
+                {"name": "WEAPON_SMOKEGRENADE", "ammo": 10},
+                {"name": "WEAPON_MOLOTOV", "ammo": 10}
             ]
         },
         {
@@ -118,8 +120,7 @@
                 }
             },
             "weapons": [
-                {"name": "WEAPON_ASSAULTRIFLE", "ammo": 300},
-                {"name": "WEAPON_KNIFE", "ammo": 0}
+                {"name": "WEAPON_FLAREGUN", "ammo": 30}
             ]
         }
     ],
