@@ -4,6 +4,7 @@
     "zones": [
         {
             "name": "1",
+            "description": "Zone 1",
             "ffaPosition": {"x": -833.4594, "y": -443.9868, "z": 38.6263},
             "ffaDimension": 1,
             "ffaColshape": {"x": -833.4594, "y": -443.9868, "radius": 10},
@@ -11,13 +12,14 @@
         },
         {
             "name": "2",
+            "description": "Zone 2",
             "ffaPosition": {"x": -833.4594, "y": -443.9868, "z": 38.6263},
             "ffaDimension": 2,
             "ffaColshape": {"x": -833.4594, "y": -443.9868, "radius": 50},
             "ffaMarker": {"type": 1, "color": [0, 255, 0, 100], "scale": [50, 50, 50]}
         }
     ],
-    "npc_positions": [
+    "npc_positions": [ 
         {
             "x": -833.6088,
             "y": -444.6857,

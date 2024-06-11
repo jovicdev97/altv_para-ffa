@@ -1,55 +1,59 @@
 /// <reference types="@altv/types-server" />
 import * as alt from 'alt-server';
-import db from '../helper/mysql/db.js';
+import mysql from 'mysql2';
 import { loadConfig } from '../helper/configLoader.js';
 
 const config = loadConfig('configs/positions.json');
 const LOBBY_POSITION = config.lobbyPosition;
 const LOBBY_DIMENSION = config.lobbyDimension;
-const { ffaPosition: FFA_POSITION, ffaDimension: FFA_DIMENSION } = config.zones[0];
-const [npcPos1, npcPos2] = config.npc_positions;
+
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    database: 'altv',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
+const db = pool.promise();
 
 export async function handlePlayerConnect(player) {
     try {
         const socialId = player.socialID || 'unknown';
         const discordId = player.discordID || 'unknown';
 
-        const [results] = await db.promise().query(
+        const [results] = await db.query(
             'SELECT * FROM players WHERE socialid = ? OR discordid = ?',
             [socialId, discordId]
         );
 
         if (results.length === 0) {
-            await db.promise().query(
+            await db.query(
                 'INSERT INTO players (socialid, discordid, name) VALUES (?, ?, ?)',
                 [socialId, discordId, player.name]
             );
             console.log(`New player ${player.name} added to the database.`);
         } else {
             const dbPlayer = results[0];
-            if (dbPlayer.socialid !== socialId || dbPlayer.discordid !== discordId) {
-                await db.promise().query(
-                    'INSERT INTO players (socialid, discordid, name) VALUES (?, ?, ?)',
-                    [socialId, discordId, player.name]
-                );
-                console.log(`Player ${player.name} has new IDs and was added to the database.`);
-            } else {
+            if (dbPlayer.socialid === socialId && dbPlayer.discordid === discordId) {
                 if (dbPlayer.name !== player.name) {
-                    await db.promise().query(
-                        'UPDATE players SET name = ? WHERE socialid = ? OR discordid = ?',
+                    await db.query(
+                        'UPDATE players SET name = ? WHERE socialid = ? AND discordid = ?',
                         [player.name, socialId, discordId]
                     );
                     console.log(`Player ${player.name} reconnected with updated name.`);
                 } else {
                     console.log(`Player ${player.name} reconnected.`);
                 }
+            } else {
+                console.log(`Duplicate player found: ${player.name} with socialId: ${socialId} and discordId: ${discordId}`);
             }
         }
 
         player.spawn(LOBBY_POSITION.x, LOBBY_POSITION.y, LOBBY_POSITION.z, 0);
-        createMarkersForPlayer(player);
         player.dimension = LOBBY_DIMENSION;
         player.setSyncedMeta('isInFFA', false);
+        createMarkersForPlayer(player);
         logPlayerInfo(player, "connected and teleported to the lobby");
 
     } catch (err) {
