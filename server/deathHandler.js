@@ -2,6 +2,7 @@
 import alt from 'alt-server';
 import db from '../helper/mysql/db.js';
 import { loadConfig } from '../helper/configLoader.js';
+import { equipFFAWeapon } from '../server/ffaLogic.js';
 
 const config = loadConfig('configs/positions.json');
 const LOBBY_POSITION = config.lobbyPosition;
@@ -47,13 +48,27 @@ function determineRespawnPoint(player) {
 }
 
 function respawnPlayer(player, respawnPoint) {
-    const respawnDelay = 3100;
+    const respawnDelay = 3150;
     alt.setTimeout(() => {
         if (!player || !player.valid) return;
 
         player.dimension = respawnPoint.dimension;
         player.spawn(respawnPoint.position.x, respawnPoint.position.y, respawnPoint.position.z, 0);
         player.health = 200;
+        
+        console.log(`Respawning player ${player.name} in dimension ${player.dimension}`);
+        
+        if (player.dimension !== 0) {
+            console.log("Player respawned inside a FFA Dimension (" + player.dimension + ") - giving proper weapons!");
+            player.setSyncedMeta('isInFFA', true); 
+            if (player.getSyncedMeta('isInFFA')) {
+                equipFFAWeapon(player);
+                console.log("Equipped FFA weapons to player " + player.name);
+            } else {
+                console.log("Player " + player.name + " is not marked as in FFA, not equipping weapons.");
+            }
+        }
+        
         alt.log(`${player.name} has respawned at ${respawnPoint.position.x}, ${respawnPoint.position.y}, ${respawnPoint.position.z} in dimension ${respawnPoint.dimension}`);
     }, respawnDelay);
 }

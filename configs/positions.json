@@ -152,6 +152,32 @@
             "streamingDistance": 200
         },
         {
+            "x": 456.3934, 
+            "y": 5571.8770, 
+            "z": 781.1692,
+            "dimension": 3,
+            "model":"S_M_Y_PestCont_01",
+            "rotation": {
+                "x": 100,
+                "y": 100,
+                "z": 0
+            },
+            "streamingDistance": 200
+        },
+        {
+            "x": 452.3934, 
+            "y": 5571.8770, 
+            "z": 781.1692,
+            "dimension": 3,
+            "model":"S_M_Y_PestCont_01",
+            "rotation": {
+                "x": 100,
+                "y": 100,
+                "z": 0
+            },
+            "streamingDistance": 200
+        },
+        {
             "x": -1835.92,
             "y": -1220.95,
             "z": 13.017,
