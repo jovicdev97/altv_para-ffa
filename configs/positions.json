@@ -8,26 +8,21 @@
     "zones": [
         {
             "name": "1",
-            "description": "Zone 1 - Del Perro Pier",
+            "description": "Würfelpark",
             "ffaPosition": {
-                "x": -1835.92,
-                "y": -1220.95,
-                "z": 13.017
+                "x": 199.0154, "y": -929.5648, "z": 30.6783
             },
             "ffaDimension": 1,
             "ffaColshape": {
-                "x": -1835.92,
-                "y": -1220.95,
-                "radius": 50
+                "x": 199.0154, "y": -929.5648, "z": 30.6783,
+                "radius": 100
             },
             "ffaMarker": {
                 "type": 1,
                 "color": [255, 0, 0, 100],
-                "scale": [100, 100, 100],
+                "scale": [200, 200, 200],
                 "position": {
-                    "x": -1835.92,
-                    "y": -1220.95,
-                    "z": 0.01
+                    "x": 199.0154, "y": -929.5648, "z": 27.6783
                 }
             },
             "weapons": [
@@ -39,26 +34,21 @@
         },
         {
             "name": "2",
-            "description": "Zone 2 - Vespucci Beach",
+            "description": "Theater",
             "ffaPosition": {
-                "x": -1193.49,
-                "y": -1484.48,
-                "z": 4.379
+                "x": 692.7692, "y": 598.0747, "z": 129.0308
             },
             "ffaDimension": 2,
             "ffaColshape": {
-                "x": -1193.49,
-                "y": -1484.48,
-                "radius": 100
+                "x": 692.7692, "y": 598.0747, "z": 129.0308,
+                "radius": 120
             },
             "ffaMarker": {
                 "type": 1,
                 "color": [0, 255, 0, 100],
-                "scale": [200, 200, 200],
+                "scale": [240, 240, 240],
                 "position": {
-                    "x": -1193.49,
-                    "y": -1484.48,
-                    "z": 0.01
+                    "x": 692.7692, "y": 598.0747, "z": 120.0308
                 }
             },
             "weapons": [
@@ -68,26 +58,21 @@
         },
         {
             "name": "3",
-            "description": "Zone 3 - Mount Chiliad",
+            "description": "Triaden Anwesen",
             "ffaPosition": {
-                "x": 455.3934, 
-                "y": 5571.8770, 
-                "z": 781.1692
+                "x": 1451.6835, "y": 1115.3407, "z": 114.3209
             },
             "ffaDimension": 3,
             "ffaColshape": {
-                "x": 455.3934,
-                "y": 5571.8770, 
-                "radius": 30
+                "x": 1451.6835, "y": 1115.3407, "z": 114.3209,
+                "radius": 110
             },
             "ffaMarker": {
                 "type": 1,
                 "color": [255, 0, 0, 255],
-                "scale": [60, 60, 60],
+                "scale": [220, 220, 220],
                 "position": {
-                    "x": 455.3934,
-                    "y": 5571.8770,
-                    "z": 741.1692
+"x": 1451.6835, "y": 1115.3407, "z": 103.3209
                 }
             },
             "weapons": [
@@ -97,30 +82,25 @@
         },
         {
             "name": "4",
-            "description": "Zone 4 - Maze Bank Arena",
+            "description": "Graveyard",
             "ffaPosition": {
-                "x": -255.24,
-                "y": -2031.07,
-                "z": 30.145
+                "x": 2392.9319, "y": 3092.2417, "z": 48.1516
             },
             "ffaDimension": 4,
             "ffaColshape": {
-                "x": -255.24,
-                "y": -2031.07,
-                "radius": 60
+                "x": 2392.9319, "y": 3092.2417, "z": 48.1516,
+                "radius": 95
             },
             "ffaMarker": {
                 "type": 1,
                 "color": [255, 255, 0, 100],
-                "scale": [120, 120, 120],
+                "scale": [190, 190, 190],
                 "position": {
-                    "x": -255.24,
-                    "y": -2031.07,
-                    "z": 20
+                    "x": 2392.9319, "y": 3092.2417, "z": 42.1516
                 }
             },
             "weapons": [
-                {"name": "WEAPON_FLAREGUN", "ammo": 30}
+                {"name": "WEAPON_PISTOL", "ammo": 30}
             ]
         }
     ],

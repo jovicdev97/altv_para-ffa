@@ -2,22 +2,22 @@
 "buttons": [
         {
             "id": "zone-1",
-            "label": "FFA-Zone 1 - Del Perro Pier",
+            "label": "Würfelpark",
             "name": "1"
         },
         {
             "id": "zone-2",
-            "label": "FFA-Zone 2 - Vespucci Beach",
+            "label": "Theater",
             "name": "2"
         },
         {
             "id": "zone-3",
-            "label": "FFA-Zone 3 - Mount Chiliad",
+            "label": "Triaden Anwesen",
             "name": "3"
         },
         {
             "id": "zone-4",
-            "label": "FFA-Zone 4 - Maze Bank Arena",
+            "label": "Graveyard",
             "name": "4"
         }
     ]
