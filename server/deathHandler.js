@@ -62,10 +62,8 @@ function respawnPlayer(player, respawnPoint) {
             console.log("Player respawned inside a FFA Dimension (" + player.dimension + ") - giving proper weapons!");
             player.setSyncedMeta('isInFFA', true); 
             if (player.getSyncedMeta('isInFFA')) {
-                alt.emitClient(player, 'immuneToDamage', false, player.dimension);
                 player.health = 8000; // lazy respawn immunity
                 alt.setTimeout(() => {
-                    alt.emitClient(player, 'immuneToDamage', false);
                     player.health = 200;
                     equipFFAWeapon(player);
                 }, 1000)
