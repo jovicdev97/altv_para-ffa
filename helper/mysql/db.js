@@ -22,3 +22,17 @@ db.getConnection()
     });
 
 export default db;
+
+function getPlayerStats(player) {
+    return new Promise((resolve, reject) => {
+        db.query('SELECT kills, deaths FROM players WHERE socialid = ? OR discordid = ?', [player.socialID, player.discordID], (err, results) => {
+            if (err) {
+                reject(err);
+                return;
+            }   
+            resolve(results);
+        });
+    });
+}
+
+console.log(getPlayerStats)
