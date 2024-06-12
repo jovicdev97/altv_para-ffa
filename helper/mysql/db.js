@@ -1,18 +1,24 @@
 import mysql from 'mysql2';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'altv'
-});
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-connection.connect((err) => {
-    if (err) {
+const configPath = path.resolve(__dirname, 'config.json');
+const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+
+const pool = mysql.createPool(config.database);
+const db = pool.promise();
+
+db.getConnection()
+    .then((connection) => {
+        console.log('Connected to the MySQL database.');
+        connection.release();
+    })
+    .catch((err) => {
         console.error('Error connecting to the database:', err);
-        return;
-    }
-    console.log('Connected to the MySQL database.');
-});
+    });
 
-export default connection;
+export default db;

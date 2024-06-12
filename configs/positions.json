@@ -139,10 +139,10 @@
             "streamingDistance": 10
         },
         {
-            "x": -832.6088,
-            "y": -446.6857,
-            "z": 36.6263,
-            "dimension": 0,
+            "x": 455.3934, 
+            "y": 5571.8770, 
+            "z": 781.1692,
+            "dimension": 3,
             "model":"S_M_Y_PestCont_01",
             "rotation": {
                 "x": 100,
@@ -152,11 +152,11 @@
             "streamingDistance": 200
         },
         {
-            "x": -839.6088,
-            "y": -444.6857,
-            "z": 36.6263,
-            "dimension": 0,
-            "model": "cs_priest",
+            "x": -1835.92,
+            "y": -1220.95,
+            "z": 13.017,
+            "dimension": 1,
+            "model": "S_M_Y_PestCont_01",
             "rotation": {
                 "x": 50,
                 "y": 50,

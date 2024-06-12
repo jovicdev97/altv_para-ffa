@@ -1,21 +1,11 @@
 /// <reference types="@altv/types-server" />
 import * as alt from 'alt-server';
-import mysql from 'mysql2';
 import { loadConfig } from '../helper/configLoader.js';
+import db from '../helper/mysql/db.js';
 
 const config = loadConfig('configs/positions.json');
 const LOBBY_POSITION = config.lobbyPosition;
 const LOBBY_DIMENSION = config.lobbyDimension;
-
-const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    database: 'altv',
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
-});
-const db = pool.promise();
 
 export async function handlePlayerConnect(player) {
     try {
