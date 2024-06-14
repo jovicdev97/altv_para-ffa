@@ -64,7 +64,7 @@
             },
             "ffaDimension": 3,
             "ffaColshape": {
-                "x": 1451.6835, "y": 1115.3407, "z": 114.3209,
+                "x": 1451.6835, "y": 1115.3407, "z": 100.3209,
                 "radius": 110
             },
             "ffaMarker": {
@@ -72,7 +72,7 @@
                 "color": [255, 0, 0, 255],
                 "scale": [220, 220, 220],
                 "position": {
-"x": 1451.6835, "y": 1115.3407, "z": 103.3209
+                "x": 1451.6835, "y": 1115.3407, "z": 95.3209
                 }
             },
             "weapons": [
@@ -104,6 +104,7 @@
             ]
         }
     ],
+
     "npc_positions": [
         {
             "x": -833.6088,
@@ -119,10 +120,8 @@
             "streamingDistance": 10
         },
         {
-            "x": 455.3934, 
-            "y": 5571.8770, 
-            "z": 781.1692,
-            "dimension": 3,
+            "x": 2392.9319, "y": 3092.2417, "z": 48.1516,
+            "dimension": 4,
             "model":"S_M_Y_PestCont_01",
             "rotation": {
                 "x": 100,
@@ -169,28 +168,6 @@
                 "z": 0
             },
             "streamingDistance": 300
-        }
-    ],
-    "buttons": [
-        {
-            "id": "zone-1",
-            "label": "FFA-Zone 1 - Del Perro Pier",
-            "name": "1"
-        },
-        {
-            "id": "zone-2",
-            "label": "FFA-Zone 2 - Vespucci Beach",
-            "name": "2"
-        },
-        {
-            "id": "zone-3",
-            "label": "FFA-Zone 3 - Mount Chiliad",
-            "name": "3"
-        },
-        {
-            "id": "zone-4",
-            "label": "FFA-Zone 4 - Maze Bank Arena",
-            "name": "4"
         }
     ]
 }
